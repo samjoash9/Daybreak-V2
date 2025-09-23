@@ -8,54 +8,28 @@ const coffeeItems = [
         items: [
             {
                 name: 'CHOCOLATE',
-                position: 'left-[12%] top-[30%]',
+                position: 'left-[25%] top-[10%]',
                 image: 'Coffees/chocolate_coffee.png',
             },
             {
                 name: 'ICED CARAMEL LATTE',
-                position: 'left-[30%] top-[25%]',
+                position: 'left-[36%] top-[12%]',
                 image: 'Coffees/iced_caramel.png',
             },
             {
                 name: 'SPANISH LATTE',
-                position: 'right-[30%] top-[25%]',
+                position: 'right-[36%] top-[12%]',
                 image: 'Coffees/spanish_latte.png',
             },
             {
                 name: 'SALTED CARAMEL',
-                position: 'right-[12%] top-[30%]',
+                position: 'right-[25%] top-[10%]',
                 image: 'Coffees/salted_caramel.png',
             },
         ],
         background: '/images/iced-bg.png',
     },
-    {
-        id: 2,
-        title: 'HEHE',
-        items: [
-            {
-                name: 'CHOCOLATE',
-                position: 'left-[12%] top-[30%]',
-                image: 'chocolate_coffee.svg',
-            },
-            {
-                name: 'ICED CARAMEL LATTE',
-                position: 'left-[30%] top-[25%]',
-                image: 'iced_caramel_coffee.svg',
-            },
-            {
-                name: 'SPANISH LATTE',
-                position: 'right-[30%] top-[25%]',
-                image: 'spanish_latte_coffee.svg',
-            },
-            {
-                name: 'SALTED CARAMEL',
-                position: 'right-[12%] top-[30%]',
-                image: 'salted_caramel_coffee.svg',
-            },
-        ],
-        background: '/images/iced-bg.png',
-    },
+
 ]
 
 export function CoffeeCarousel() {
