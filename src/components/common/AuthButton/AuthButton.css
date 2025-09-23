@@ -1,0 +1,20 @@
+.auth-button {
+    display: inline-block;
+    padding: 8px 60px;
+    border: none;
+    border-radius: 9999px;
+    background-color: #512615;
+    color: #ffffff;
+    font-family: 'League Spartan', Arial, sans-serif;
+    font-weight: 700;
+    text-align: center;
+    width: 100%;
+    height: auto;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.auth-button:hover {
+    background-color: #e5c570;
+}

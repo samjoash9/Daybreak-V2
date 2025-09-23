@@ -1,0 +1,28 @@
+/* ===== LandingPage.css ===== */
+
+body.landing-page {
+    background-image:
+        url('/FooterImage.svg'),
+        url('/background.svg');
+
+
+    background-position: center bottom, center center;
+    background-size: 100% auto, cover;
+    background-repeat: no-repeat, no-repeat;
+    background-attachment: scroll, fixed;
+    min-height: 100vh;
+}
+
+
+@media (max-width: 768px) {
+    body.landing-page {
+        background-size: 100% auto, cover;
+        background-position: center bottom, center center;
+    }
+}
+
+@media (min-aspect-ratio: 3/2) {
+    body.landing-page {
+        background-size: 100% auto, cover;
+    }
+}
