@@ -27,9 +27,35 @@ const coffeeItems = [
                 image: 'Coffees/salted_caramel.png',
             },
         ],
-        background: '/images/iced-bg.png',
+        background: 'Coffees/iced_coffee_bg.png',
     },
-
+    {
+        id: 2,
+        title: 'BERRY SERIES',
+        items: [
+            {
+                name: 'WHITE CHOCOLATE BERRY',
+                position: 'left-[25%] top-[10%]',
+                image: 'Coffees/white_chocolate.png',
+            },
+            {
+                name: 'CHOCOLATE BERRY',
+                position: 'left-[36%] top-[12%]',
+                image: 'Coffees/chocolate_berry.png',
+            },
+            {
+                name: 'STRAWBERRY MILK',
+                position: 'right-[36%] top-[12%]',
+                image: 'Coffees/strawberry_milk.png',
+            },
+            {
+                name: 'MACHA BERRY',
+                position: 'right-[25%] top-[10%]',
+                image: 'Coffees/macha_berry.png',
+            },
+        ],
+        background: 'Coffees/berry_series_bg.png',
+    },
 ]
 
 export function CoffeeCarousel() {
@@ -50,24 +76,26 @@ export function CoffeeCarousel() {
         <div className="relative w-screen">
             <div className="relative w-full h-[700px] overflow-hidden">
                 {/* Background */}
-                <div className="absolute inset-0 bg-[#f9deb3] z-0"></div>
+                <div className="absolute inset-0 z-0
+                    bg-[radial-gradient(circle,#fffbe9_0%,#f9deb3_70%,#d6a96c_100%)]">
+                </div>
 
                 {/* Optional splash background image */}
                 {coffeeItems[currentIndex].background && (
                     <img
                         src={coffeeItems[currentIndex].background}
                         alt=""
-                        className="absolute inset-0 w-full h-full object-cover opacity-40 z-0"
+                        className="absolute inset-0 w-full h-full z-0"
                     />
                 )}
 
                 {/* Coffee splash shadow */}
-                <div className="absolute inset-0 z-10 overflow-hidden">
+                {/* <div className="absolute inset-0 z-10 overflow-hidden">
                     <div className="absolute bottom-0 w-full h-[70%] bg-[#8b5a2b]/20 rounded-[100%] blur-md"></div>
-                </div>
+                </div> */}
 
                 {/* Content */}
-                <div className="absolute inset-0 z-20 flex flex-col items-center justify-between py-8">
+                <div className="absolute inset-0 z-20 flex flex-col items-center pt-8">
                     {/* Title */}
                     <h1 className="text-4xl md:text-5xl font-bold text-[#4a2c09] mt-4">
                         {coffeeItems[currentIndex].title}
@@ -92,13 +120,17 @@ export function CoffeeCarousel() {
                         ))}
                     </div>
 
-
-                    {/* Add to cart button */}
-                    <button className="bg-[#4a2c09] text-white py-3 px-6 rounded-full flex items-center gap-2 hover:bg-[#3a2208] transition-colors">
+                    {/* Add to cart button – move to bottom-right */}
+                    <button
+                        className="absolute bottom-20 right-[35%] bg-[#4a2c09] text-white 
+                        py-3 px-6 rounded-full flex items-center gap-2
+                        hover:bg-[#3a2208] transition-colors text-2xl"
+                    >
                         Add to Cart Now
-                        <ArrowRightIcon size={16} />
+                        <ArrowRightIcon size={30} />
                     </button>
                 </div>
+
 
                 {/* Navigation */}
                 <button
