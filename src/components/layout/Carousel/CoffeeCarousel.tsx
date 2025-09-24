@@ -27,7 +27,8 @@ const coffeeItems = [
                 image: 'Coffees/salted_caramel.png',
             },
         ],
-        background: 'Coffees/iced_coffee_bg.png',
+        background: 'Coffees/iced_coffee_bg.svg',
+        gradient: 'bg-[radial-gradient(circle,#fffbe9_0%,#f9deb3_70%,#d6a96c_100%)]'
     },
     {
         id: 2,
@@ -54,33 +55,57 @@ const coffeeItems = [
                 image: 'Coffees/macha_berry.png',
             },
         ],
-        background: 'Coffees/berry_series_bg.png',
+        background: 'Coffees/strawberry_bg.svg',
+        gradient: 'bg-[radial-gradient(circle,#ffffff_0%,#ff797e_70%,#ff797e_100%)]'
+    },
+    {
+        id: 3,
+        title: 'SODA SERIES',
+        items: [
+            {
+                name: 'STRAWBERRY',
+                position: 'left-[25%] top-[10%]',
+                image: 'Coffees/strawberry.png',
+            },
+            {
+                name: 'PASSION FRUIT',
+                position: 'left-[36%] top-[12%]',
+                image: 'Coffees/passion_fruit.png',
+            },
+            {
+                name: 'BLUE BERRY',
+                position: 'right-[36%] top-[12%]',
+                image: 'Coffees/blue_berry.png',
+            },
+            {
+                name: 'GREEN APPLE',
+                position: 'right-[25%] top-[10%]',
+                image: 'Coffees/green_apple.png',
+            },
+        ],
+        background: 'Coffees/soda_bg.svg',
+        gradient: 'bg-[radial-gradient(circle,#ffffff_0%,#829aff_70%,#829aff_100%)]'
     },
 ]
-
 export function CoffeeCarousel() {
     const [currentIndex, setCurrentIndex] = useState(0)
 
-    const prevSlide = () => {
-        setCurrentIndex(
-            currentIndex === 0 ? coffeeItems.length - 1 : currentIndex - 1
-        )
-    }
-    const nextSlide = () => {
-        setCurrentIndex(
-            currentIndex === coffeeItems.length - 1 ? 0 : currentIndex + 1
-        )
-    }
+    const prevSlide = () =>
+        setCurrentIndex(currentIndex === 0 ? coffeeItems.length - 1 : currentIndex - 1)
+    const nextSlide = () =>
+        setCurrentIndex(currentIndex === coffeeItems.length - 1 ? 0 : currentIndex + 1)
 
     return (
         <div className="relative w-screen">
-            <div className="relative w-full h-[700px] overflow-hidden">
-                {/* Background */}
-                <div className="absolute inset-0 z-0
-                    bg-[radial-gradient(circle,#fffbe9_0%,#f9deb3_70%,#d6a96c_100%)]">
-                </div>
+            {/* CAROUSEL */}
 
-                {/* Optional splash background image */}
+            <div className="relative w-full h-[700px] overflow-hidden">
+                {/* Dynamic gradient */}
+                <div
+                    className={`absolute inset-0 z-0 ${coffeeItems[currentIndex].gradient}`}
+                />
+
+                {/* Optional splash background */}
                 {coffeeItems[currentIndex].background && (
                     <img
                         src={coffeeItems[currentIndex].background}
@@ -89,19 +114,12 @@ export function CoffeeCarousel() {
                     />
                 )}
 
-                {/* Coffee splash shadow */}
-                {/* <div className="absolute inset-0 z-10 overflow-hidden">
-                    <div className="absolute bottom-0 w-full h-[70%] bg-[#8b5a2b]/20 rounded-[100%] blur-md"></div>
-                </div> */}
-
                 {/* Content */}
                 <div className="absolute inset-0 z-20 flex flex-col items-center pt-8">
-                    {/* Title */}
                     <h1 className="text-4xl md:text-5xl font-bold text-[#4a2c09] mt-4">
                         {coffeeItems[currentIndex].title}
                     </h1>
 
-                    {/* Each coffee image + label */}
                     <div className="relative w-full h-[500px] md:h-[600px]">
                         {coffeeItems[currentIndex].items.map((item, idx) => (
                             <div
@@ -120,7 +138,6 @@ export function CoffeeCarousel() {
                         ))}
                     </div>
 
-                    {/* Add to cart button – move to bottom-right */}
                     <button
                         className="absolute bottom-20 right-[35%] bg-[#4a2c09] text-white 
                         py-3 px-6 rounded-full flex items-center gap-2
@@ -130,7 +147,6 @@ export function CoffeeCarousel() {
                         <ArrowRightIcon size={30} />
                     </button>
                 </div>
-
 
                 {/* Navigation */}
                 <button
@@ -146,6 +162,12 @@ export function CoffeeCarousel() {
                     <ChevronRightIcon size={30} className="text-[#4a2c09]" />
                 </button>
             </div>
+
+            {/* DAYBREAK MENU */}
+            <div>
+
+            </div>
+
         </div>
     )
 }
