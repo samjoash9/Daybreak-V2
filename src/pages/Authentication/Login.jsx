@@ -1,5 +1,5 @@
-import Header from "../../components/layout/Header/Header";
-import AuthForm from "../../components/layout/AuthForm/AuthForm";
+import Header from "../../components/layout/Header";
+import AuthForm from "../../components/layout/AuthForm";
 
 const Login = () => {
 

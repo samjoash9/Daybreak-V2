@@ -1,5 +1,5 @@
-import AuthInput from '../../common/AuthInput/AuthInput';
-import AuthButton from '../../common/AuthButton/AuthButton';
+import AuthInput from '../common/AuthInput';
+import AuthButton from '../common/AuthButton';
 import { FaUser, FaLock } from 'react-icons/fa';
 import { MdEmail } from "react-icons/md";
 import { GiHouseKeys } from "react-icons/gi";

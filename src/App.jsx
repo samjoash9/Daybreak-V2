@@ -4,10 +4,10 @@ import SignUp from './pages/Authentication/SignUp'
 import Login from './pages/Authentication/Login'
 import LandingPage from './pages/LandingPage/LandingPage'
 import { Routes, Route } from "react-router-dom";
-import Store from './pages/Store/Store'
-import Locations from './pages/Locations/Locations'
-import Contacts from './pages/Contacts/Contacts'
-import About from './pages/About/About'
+import Store from './pages/Store'
+import Locations from './pages/Locations'
+import Contacts from './pages/Contacts'
+import About from './pages/About'
 
 function App() {
   return (

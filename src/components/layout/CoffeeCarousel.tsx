@@ -8,22 +8,22 @@ const coffeeItems = [
         items: [
             {
                 name: 'CHOCOLATE',
-                position: 'left-[25%] top-[10%]',
+                position: 'left-[26%] top-[10%]',
                 image: 'Coffees/chocolate_coffee.png',
             },
             {
                 name: 'ICED CARAMEL LATTE',
-                position: 'left-[36%] top-[12%]',
+                position: 'left-[37%] top-[12%]',
                 image: 'Coffees/iced_caramel.png',
             },
             {
                 name: 'SPANISH LATTE',
-                position: 'right-[36%] top-[12%]',
+                position: 'right-[37%] top-[12%]',
                 image: 'Coffees/spanish_latte.png',
             },
             {
                 name: 'SALTED CARAMEL',
-                position: 'right-[25%] top-[10%]',
+                position: 'right-[26%] top-[10%]',
                 image: 'Coffees/salted_caramel.png',
             },
         ],
@@ -36,22 +36,22 @@ const coffeeItems = [
         items: [
             {
                 name: 'WHITE CHOCOLATE BERRY',
-                position: 'left-[25%] top-[10%]',
+                position: 'left-[26%] top-[10%]',
                 image: 'Coffees/white_chocolate.png',
             },
             {
                 name: 'CHOCOLATE BERRY',
-                position: 'left-[36%] top-[12%]',
+                position: 'left-[37%] top-[12%]',
                 image: 'Coffees/chocolate_berry.png',
             },
             {
                 name: 'STRAWBERRY MILK',
-                position: 'right-[36%] top-[12%]',
+                position: 'right-[37%] top-[12%]',
                 image: 'Coffees/strawberry_milk.png',
             },
             {
                 name: 'MACHA BERRY',
-                position: 'right-[25%] top-[10%]',
+                position: 'right-[26%] top-[10%]',
                 image: 'Coffees/macha_berry.png',
             },
         ],
@@ -64,22 +64,22 @@ const coffeeItems = [
         items: [
             {
                 name: 'STRAWBERRY',
-                position: 'left-[25%] top-[10%]',
+                position: 'left-[26%] top-[10%]',
                 image: 'Coffees/strawberry.png',
             },
             {
                 name: 'PASSION FRUIT',
-                position: 'left-[36%] top-[12%]',
+                position: 'left-[37%] top-[12%]',
                 image: 'Coffees/passion_fruit.png',
             },
             {
                 name: 'BLUE BERRY',
-                position: 'right-[36%] top-[12%]',
+                position: 'right-[37%] top-[12%]',
                 image: 'Coffees/blue_berry.png',
             },
             {
                 name: 'GREEN APPLE',
-                position: 'right-[25%] top-[10%]',
+                position: 'right-[26%] top-[10%]',
                 image: 'Coffees/green_apple.png',
             },
         ],
@@ -87,6 +87,7 @@ const coffeeItems = [
         gradient: 'bg-[radial-gradient(circle,#ffffff_0%,#829aff_70%,#829aff_100%)]'
     },
 ]
+
 export function CoffeeCarousel() {
     const [currentIndex, setCurrentIndex] = useState(0)
 
@@ -101,9 +102,7 @@ export function CoffeeCarousel() {
 
             <div className="relative w-full h-[700px] overflow-hidden">
                 {/* Dynamic gradient */}
-                <div
-                    className={`absolute inset-0 z-0 ${coffeeItems[currentIndex].gradient}`}
-                />
+                <div className={`absolute inset-0 z-0 ${coffeeItems[currentIndex].gradient}`} />
 
                 {/* Optional splash background */}
                 {coffeeItems[currentIndex].background && (
@@ -162,12 +161,6 @@ export function CoffeeCarousel() {
                     <ChevronRightIcon size={30} className="text-[#4a2c09]" />
                 </button>
             </div>
-
-            {/* DAYBREAK MENU */}
-            <div>
-
-            </div>
-
         </div>
     )
 }

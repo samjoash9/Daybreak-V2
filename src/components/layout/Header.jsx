@@ -1,6 +1,5 @@
 import React from "react";
-import HeaderButton from "../../common/HeaderButton/HeaderButton";
-import "./Header.css";
+import HeaderButton from "../common/HeaderButton";
 import { useNavigate, useLocation } from "react-router-dom";
 
 const Header = ({ AuthButtonTitle = "Login" }) => {
@@ -18,7 +17,17 @@ const Header = ({ AuthButtonTitle = "Login" }) => {
                 onClick={() => navigate("/")}
             >
                 <img src="/logo.svg" alt="" className="size-14" />
-                <div className="logo text-[#6c3608] text-4xl">DayBreak Cafe</div>
+                <div
+                    className="
+                        text-[#6c3608]
+                        text-4xl
+                        font-bold
+                        tracking-[-0.5px]
+                        font-['League_Spartan',sans-serif]
+                    "
+                >
+                    DayBreak Cafe
+                </div>
             </div>
 
             {/* NAVIGATIONS */}

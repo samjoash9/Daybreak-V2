@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "../../components/layout/Header/Header";
+import Header from "../../components/layout/Header";
 import { ArrowUpRight } from "lucide-react";
 import "./LandingPage.css";
 import BlurText from "../../components/motions/BlurText";
