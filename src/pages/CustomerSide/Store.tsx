@@ -1,7 +1,7 @@
-import Header from "../components/layout/Header";
-import { CoffeeCarousel } from "../components/layout/CoffeeCarousel";
-import { ProductCard } from "../components/layout/ProductCard";
-import ProductDivider from "../components/layout/ProductDivider";
+import Header from "../../components/layout/Header";
+import { CoffeeCarousel } from "../../components/layout/CoffeeCarousel";
+import { ProductCard } from "../../components/layout/ProductCard";
+import ProductDivider from "../../components/layout/ProductDivider";
 
 // Pretend this comes from the backend
 const iced_coffee = [
