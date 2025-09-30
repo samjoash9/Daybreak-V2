@@ -25,7 +25,7 @@ export function SellerSidebar() {
 
     return (
         <div
-            className={`bg-[#8B4513] text-white h-screen transition-all duration-300 ${isCollapsed ? "w-16" : "w-64"
+            className={`bg-[#512615] text-white h-screen transition-all duration-300 ${isCollapsed ? "w-16" : "w-64"
                 }`}
         >
             {/* Header */}

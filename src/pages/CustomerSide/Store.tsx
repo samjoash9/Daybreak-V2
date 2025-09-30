@@ -2,8 +2,8 @@ import Header from "../../components/layout/Header";
 import { CoffeeCarousel } from "../../components/layout/CoffeeCarousel";
 import { ProductCard } from "../../components/layout/ProductCard";
 import ProductDivider from "../../components/layout/ProductDivider";
+import TitleHolder from "../../components/common/title-holder"
 
-// Pretend this comes from the backend
 const iced_coffee = [
     { id: 1, name: "CARAMEL ICED LATTE", price: 39, image: "/Products/caramel_iced_latte.png" },
     { id: 2, name: "FRENCH VANILLA", price: 39, image: "/Products/french_vanilla.png" },
@@ -49,15 +49,13 @@ const Store = () => {
                 <Header />
                 <CoffeeCarousel />
 
-                {/* TITLE + Subtitle */}
-                <div className="text-center mt-8">
-                    <h1 className="font-['League Spartan',Arial,sans-serif] text-9xl font-bold text-[#4a2b17] tracking-tight">
-                        DAYBREAK MENU
-                    </h1>
-                    <p className="mt-2 text-2xl font-bold text-[#4a2b17] uppercase tracking-wide">
-                        ADD ONS: 10PHP ESPRESSO , SINKER , BERRIES , COFFEE JELLY
-                    </p>
-                </div>
+                <TitleHolder
+                    Title="DAYBREAK MENU"
+                    Description="ADD ONS: 10PHP ESPRESSO , SINKER , BERRIES , COFFEE JELLY"
+                    TitleSize="text-9xl"
+                    DescriptionSize="text-2xl"
+                    Bold={true}
+                />
 
                 <ProductDivider Title="ICED COFFEE" Description="OUR MOST POPULAR ICED COFFEES" Color="#fce7c7" />
 
