@@ -24,19 +24,28 @@ export function SellerSidebar() {
     ];
 
     return (
-        <div
-            className={`bg-[#512615] text-white h-screen transition-all duration-300 ${isCollapsed ? "w-16" : "w-64"
-                }`}
-        >
+        <div className={`bg-[#512615] text-white h-screen transition-all duration-300 ${isCollapsed ? "w-19" : "w-64"}`}>
             {/* Header */}
-            <div className="p-4 border-b border-[#A0522D]">
+            <div className="p-4 border-b border-[#e5c570]">
                 <div className="flex items-center justify-between">
                     {!isCollapsed && (
                         <div className="flex items-center gap-2">
-                            <Coffee className="h-8 w-8 text-[#D2B48C]" />
-                            <div>
-                                <h2 className="font-semibold">DayBreak Cafe</h2>
-                                <p className="text-[#D2B48C] text-sm">Seller Dashboard</p>
+                            {/* LOGO */}
+                            <div
+                                className="flex items-center"
+                            >
+                                <img src="/logo_withbg.svg" alt="" className="size-8" />
+                                <div
+                                    className="
+                                        text-white
+                                        text-2xl
+                                        font-bold
+                                        tracking-[-0.5px]
+                                        font-['League_Spartan',sans-serif]
+                                    "
+                                >
+                                    DayBreak Cafe
+                                </div>
                             </div>
                         </div>
                     )}
@@ -62,8 +71,8 @@ export function SellerSidebar() {
                                     to={`/seller/${item.id}`}
                                     className={({ isActive }) =>
                                         `w-full flex items-center gap-3 p-3 rounded-lg transition-colors ${isActive
-                                            ? "bg-[#D2B48C] text-[#8B4513]"
-                                            : "hover:bg-[#A0522D] text-white"
+                                            ? "bg-[#e5c570] text-black"
+                                            : "hover:bg-[#e5c570] text-white"
                                         }`
                                     }
                                 >

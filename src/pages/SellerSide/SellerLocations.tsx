@@ -104,17 +104,18 @@ export default function SellerLocations() {
   const [selectedStatus, setSelectedStatus] = useState('all');
 
   const filteredLocations = locations.filter(location => {
-    const matchesSearch = location.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    const matchesSearch =
+      location.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       location.address.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesStatus = selectedStatus === 'all' || location.status === selectedStatus;
     return matchesSearch && matchesStatus;
   });
 
   const getStatusBadge = (status: string) => {
-    const statusConfig = {
+    const statusConfig: Record<string, { variant: string; label: string }> = {
       active: { variant: 'default', label: 'Active' },
       maintenance: { variant: 'secondary', label: 'Under Maintenance' },
-      closed: { variant: 'destructive', label: 'Closed' }
+      closed: { variant: 'destructive', label: 'Closed' },
     };
 
     const config = statusConfig[status] || statusConfig.active;
@@ -122,7 +123,9 @@ export default function SellerLocations() {
   };
 
   const getTotalRevenue = () => {
-    return locations.filter(l => l.status === 'active').reduce((total, location) => total + location.monthlyRevenue, 0);
+    return locations
+      .filter(l => l.status === 'active')
+      .reduce((total, location) => total + location.monthlyRevenue, 0);
   };
 
   const getActiveLocations = () => {
@@ -130,77 +133,22 @@ export default function SellerLocations() {
   };
 
   const getTotalOrders = () => {
-    return locations.filter(l => l.status === 'active').reduce((total, location) => total + location.monthlyOrders, 0);
+    return locations
+      .filter(l => l.status === 'active')
+      .reduce((total, location) => total + location.monthlyOrders, 0);
   };
 
   return (
     <div className="p-6 space-y-6">
-      <div className="flex justify-between items-center">
-        <div>
-          <h1 className="text-3xl mb-2">Locations</h1>
-          <p className="text-muted-foreground">Manage your cafe branches and their performance</p>
-        </div>
-        <Dialog>
-          <DialogTrigger asChild>
-            <Button className="bg-[#8B4513] hover:bg-[#A0522D]">
-              <Plus className="h-4 w-4 mr-2" />
-              Add Location
-            </Button>
-          </DialogTrigger>
-          <DialogContent className="max-w-md">
-            <DialogHeader>
-              <DialogTitle>Add New Location</DialogTitle>
-              <DialogDescription>Add a new branch to your cafe network</DialogDescription>
-            </DialogHeader>
-            <div className="space-y-4">
-              <div>
-                <Label htmlFor="location-name">Location Name</Label>
-                <Input id="location-name" placeholder="e.g., Main Branch" />
-              </div>
-              <div>
-                <Label htmlFor="location-address">Address</Label>
-                <Textarea id="location-address" placeholder="Full address..." />
-              </div>
-              <div>
-                <Label htmlFor="location-phone">Phone Number</Label>
-                <Input id="location-phone" placeholder="+63 2 123 4567" />
-              </div>
-              <div>
-                <Label htmlFor="location-manager">Manager</Label>
-                <Input id="location-manager" placeholder="Manager name" />
-              </div>
-              <div>
-                <Label htmlFor="location-hours">Opening Hours</Label>
-                <Input id="location-hours" placeholder="e.g., 6:00 AM - 10:00 PM" />
-              </div>
-              <div>
-                <Label htmlFor="location-capacity">Seating Capacity</Label>
-                <Input id="location-capacity" type="number" placeholder="0" />
-              </div>
-              <div>
-                <Label htmlFor="location-status">Status</Label>
-                <Select>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select status" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="active">Active</SelectItem>
-                    <SelectItem value="maintenance">Under Maintenance</SelectItem>
-                    <SelectItem value="closed">Closed</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <Button className="w-full bg-[#8B4513] hover:bg-[#A0522D]">
-                Add Location
-              </Button>
-            </div>
-          </DialogContent>
-        </Dialog>
+      {/* Header */}
+      <div>
+        <h1 className="text-3xl mb-2">Locations</h1>
+        <p className="text-muted-foreground">Manage your cafe branches and their performance</p>
       </div>
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <Card>
+        <Card className="bg-white border-0 shadow-[0_-4px_6px_rgba(0,0,0,0.1),0_4px_6px_rgba(0,0,0,0.1)]">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -212,7 +160,7 @@ export default function SellerLocations() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-white border-0 shadow-[0_-4px_6px_rgba(0,0,0,0.1),0_4px_6px_rgba(0,0,0,0.1)]">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -224,7 +172,7 @@ export default function SellerLocations() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-white border-0 shadow-[0_-4px_6px_rgba(0,0,0,0.1),0_4px_6px_rgba(0,0,0,0.1)]">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -236,7 +184,7 @@ export default function SellerLocations() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-white border-0 shadow-[0_-4px_6px_rgba(0,0,0,0.1),0_4px_6px_rgba(0,0,0,0.1)]">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -249,11 +197,12 @@ export default function SellerLocations() {
         </Card>
       </div>
 
-      {/* Filters */}
-      <Card>
+      {/* Filters + Add Location */}
+      <Card className="bg-white border-0 shadow-[0_-4px_6px_rgba(0,0,0,0.1),0_4px_6px_rgba(0,0,0,0.1)]">
         <CardContent className="p-4">
-          <div className="flex flex-col sm:flex-row gap-4">
-            <div className="relative flex-1">
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            {/* Search */}
+            <div className="relative flex-1 w-full">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
               <Input
                 placeholder="Search locations..."
@@ -262,19 +211,77 @@ export default function SellerLocations() {
                 className="pl-10"
               />
             </div>
-            <div className="flex gap-2">
-              <Select value={selectedStatus} onValueChange={setSelectedStatus}>
-                <SelectTrigger className="w-[140px]">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Status</SelectItem>
-                  <SelectItem value="active">Active</SelectItem>
-                  <SelectItem value="maintenance">Maintenance</SelectItem>
-                  <SelectItem value="closed">Closed</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+
+            {/* Status filter */}
+            <Select value={selectedStatus} onValueChange={setSelectedStatus}>
+              <SelectTrigger className="w-[140px]">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Status</SelectItem>
+                <SelectItem value="active">Active</SelectItem>
+                <SelectItem value="maintenance">Maintenance</SelectItem>
+                <SelectItem value="closed">Closed</SelectItem>
+              </SelectContent>
+            </Select>
+
+            {/* Add Location button */}
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button className="bg-[#8B4513] hover:bg-[#A0522D] whitespace-nowrap">
+                  <Plus className="h-4 w-4 mr-2" />
+                  Add Location
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-md">
+                <DialogHeader>
+                  <DialogTitle>Add New Location</DialogTitle>
+                  <DialogDescription>Add a new branch to your cafe network</DialogDescription>
+                </DialogHeader>
+                <div className="space-y-4">
+                  <div>
+                    <Label htmlFor="location-name">Location Name</Label>
+                    <Input id="location-name" placeholder="e.g., Main Branch" />
+                  </div>
+                  <div>
+                    <Label htmlFor="location-address">Address</Label>
+                    <Textarea id="location-address" placeholder="Full address..." />
+                  </div>
+                  <div>
+                    <Label htmlFor="location-phone">Phone Number</Label>
+                    <Input id="location-phone" placeholder="+63 2 123 4567" />
+                  </div>
+                  <div>
+                    <Label htmlFor="location-manager">Manager</Label>
+                    <Input id="location-manager" placeholder="Manager name" />
+                  </div>
+                  <div>
+                    <Label htmlFor="location-hours">Opening Hours</Label>
+                    <Input id="location-hours" placeholder="e.g., 6:00 AM - 10:00 PM" />
+                  </div>
+                  <div>
+                    <Label htmlFor="location-capacity">Seating Capacity</Label>
+                    <Input id="location-capacity" type="number" placeholder="0" />
+                  </div>
+                  <div>
+                    <Label htmlFor="location-status">Status</Label>
+                    <Select>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select status" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="active">Active</SelectItem>
+                        <SelectItem value="maintenance">Under Maintenance</SelectItem>
+                        <SelectItem value="closed">Closed</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <Button className="w-full bg-[#8B4513] hover:bg-[#A0522D]">
+                    Add Location
+                  </Button>
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
         </CardContent>
       </Card>
@@ -282,14 +289,13 @@ export default function SellerLocations() {
       {/* Locations Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {filteredLocations.map((location) => (
-          <Card key={location.id} className="overflow-hidden">
+          <Card className="bg-white border-0 shadow-[0_-4px_6px_rgba(0,0,0,0.1),0_4px_6px_rgba(0,0,0,0.1)]"
+            key={location.id}>
             <CardHeader className="pb-3">
               <div className="flex justify-between items-start">
                 <div>
                   <CardTitle className="text-xl">{location.name}</CardTitle>
-                  <CardDescription className="mt-1">
-                    Managed by {location.manager}
-                  </CardDescription>
+                  <CardDescription className="mt-1">Managed by {location.manager}</CardDescription>
                 </div>
                 <div className="flex items-center gap-2">
                   {getStatusBadge(location.status)}
@@ -304,9 +310,7 @@ export default function SellerLocations() {
                         <Edit className="h-4 w-4 mr-2" />
                         Edit Location
                       </DropdownMenuItem>
-                      <DropdownMenuItem>
-                        View Analytics
-                      </DropdownMenuItem>
+                      <DropdownMenuItem>View Analytics</DropdownMenuItem>
                       <DropdownMenuItem className="text-red-600">
                         <Trash2 className="h-4 w-4 mr-2" />
                         Delete Location
@@ -338,7 +342,7 @@ export default function SellerLocations() {
                 </div>
               </div>
 
-              {/* Performance Metrics */}
+              {/* Performance */}
               {location.status === 'active' && (
                 <div className="border-t pt-4">
                   <h4 className="font-medium mb-3">Monthly Performance</h4>
@@ -346,8 +350,13 @@ export default function SellerLocations() {
                     <div>
                       <p className="text-sm text-muted-foreground">Revenue</p>
                       <div className="flex items-center gap-1">
-                        <span className="font-semibold">₱{location.monthlyRevenue.toLocaleString()}</span>
-                        <div className={`flex items-center text-xs ${location.revenueChange >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                        <span className="font-semibold">
+                          ₱{location.monthlyRevenue.toLocaleString()}
+                        </span>
+                        <div
+                          className={`flex items-center text-xs ${location.revenueChange >= 0 ? 'text-green-600' : 'text-red-600'
+                            }`}
+                        >
                           {location.revenueChange >= 0 ? (
                             <TrendingUp className="h-3 w-3" />
                           ) : (
@@ -360,8 +369,13 @@ export default function SellerLocations() {
                     <div>
                       <p className="text-sm text-muted-foreground">Orders</p>
                       <div className="flex items-center gap-1">
-                        <span className="font-semibold">{location.monthlyOrders.toLocaleString()}</span>
-                        <div className={`flex items-center text-xs ${location.orderChange >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                        <span className="font-semibold">
+                          {location.monthlyOrders.toLocaleString()}
+                        </span>
+                        <div
+                          className={`flex items-center text-xs ${location.orderChange >= 0 ? 'text-green-600' : 'text-red-600'
+                            }`}
+                        >
                           {location.orderChange >= 0 ? (
                             <TrendingUp className="h-3 w-3" />
                           ) : (
@@ -400,8 +414,9 @@ export default function SellerLocations() {
         ))}
       </div>
 
+      {/* Empty state */}
       {filteredLocations.length === 0 && (
-        <Card>
+        <Card className="bg-white border-0 shadow-[0_-4px_6px_rgba(0,0,0,0.1),0_4px_6px_rgba(0,0,0,0.1)]">
           <CardContent className="p-12 text-center">
             <Store className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
             <h3 className="text-lg font-semibold mb-2">No locations found</h3>

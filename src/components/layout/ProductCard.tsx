@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { ChevronDownIcon } from 'lucide-react'
-import { motion } from "motion/react"
+import { Button } from '../common/button'
 
 type Size = 'SMALL' | 'LARGE'
 
@@ -100,6 +100,9 @@ export function ProductCard({
                 </div>
 
                 {/* Add to Cart Button */}
+
+
+
                 <button
                     className="w-full py-3 bg-[#5e341c] text-white font-bold uppercase hover:bg-[#4e2a14] transition-colors"
                     onClick={handleAddToCart}

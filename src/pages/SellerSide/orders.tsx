@@ -146,16 +146,13 @@ export default function Orders() {
 
   return (
     <div className="p-6 space-y-6">
-      <div className="flex justify-between items-center">
-        <div>
-          <h1 className="text-3xl mb-2">Orders</h1>
-          <p className="text-muted-foreground">Manage and track customer orders</p>
-        </div>
+      <div>
+        <h1 className="text-3xl mb-2">Order</h1>
+        <p className="text-muted-foreground">Manage and track customer orders.</p>
       </div>
-
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card>
+        <Card className="bg-white border-0 shadow-[0_-4px_6px_rgba(0,0,0,0.1),0_4px_6px_rgba(0,0,0,0.1)]">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -169,7 +166,7 @@ export default function Orders() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-white border-0 shadow-[0_-4px_6px_rgba(0,0,0,0.1),0_4px_6px_rgba(0,0,0,0.1)]">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -183,7 +180,7 @@ export default function Orders() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-white border-0 shadow-[0_-4px_6px_rgba(0,0,0,0.1),0_4px_6px_rgba(0,0,0,0.1)]">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -197,7 +194,7 @@ export default function Orders() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-white border-0 shadow-[0_-4px_6px_rgba(0,0,0,0.1),0_4px_6px_rgba(0,0,0,0.1)]">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <div>
@@ -213,7 +210,7 @@ export default function Orders() {
       </div>
 
       {/* Filters */}
-      <Card>
+      <Card className="bg-white border-0 shadow-[0_-4px_6px_rgba(0,0,0,0.1),0_4px_6px_rgba(0,0,0,0.1)]">
         <CardContent className="p-4">
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="relative flex-1">
@@ -247,7 +244,8 @@ export default function Orders() {
       {/* Orders List */}
       <div className="grid gap-4">
         {filteredOrders.map((order) => (
-          <Card key={order.id}>
+          <Card className="bg-white border-0 shadow-[0_-4px_6px_rgba(0,0,0,0.1),0_4px_6px_rgba(0,0,0,0.1)]"
+            key={order.id}>
             <CardContent className="p-6">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div className="flex-1">
@@ -366,7 +364,7 @@ export default function Orders() {
       </div>
 
       {filteredOrders.length === 0 && (
-        <Card>
+        <Card className="bg-white border-0 shadow-[0_-4px_6px_rgba(0,0,0,0.1),0_4px_6px_rgba(0,0,0,0.1)]">
           <CardContent className="p-12 text-center">
             <Package className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
             <h3 className="text-lg font-semibold mb-2">No orders found</h3>

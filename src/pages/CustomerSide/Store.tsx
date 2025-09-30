@@ -38,12 +38,12 @@ const Store = () => {
                 {/* Hide scrollbar in Chromium browsers */}
                 <style>
                     {`
-            div::-webkit-scrollbar {
-              width: 0;
-              height: 0;
-              background: transparent;
-            }
-          `}
+                        div::-webkit-scrollbar {
+                        width: 0;
+                        height: 0;
+                        background: transparent;
+                        }
+                    `}
                 </style>
 
                 <Header />

@@ -45,7 +45,7 @@ export default function Dashboard() {
 
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <Card>
+        <Card className="bg-white border-0 shadow-[0_-4px_6px_rgba(0,0,0,0.1),0_4px_6px_rgba(0,0,0,0.1)]">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
             <DollarSign className="h-4 w-4 text-muted-foreground" />
@@ -59,7 +59,7 @@ export default function Dashboard() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-white border-0 shadow-[0_-4px_6px_rgba(0,0,0,0.1),0_4px_6px_rgba(0,0,0,0.1)]">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Orders</CardTitle>
             <ShoppingCart className="h-4 w-4 text-muted-foreground" />
@@ -73,7 +73,7 @@ export default function Dashboard() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-white border-0 shadow-[0_-4px_6px_rgba(0,0,0,0.1),0_4px_6px_rgba(0,0,0,0.1)]">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Customers</CardTitle>
             <Users className="h-4 w-4 text-muted-foreground" />
@@ -87,7 +87,7 @@ export default function Dashboard() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-white border-0 shadow-[0_-4px_6px_rgba(0,0,0,0.1),0_4px_6px_rgba(0,0,0,0.1)]">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Products</CardTitle>
             <Package className="h-4 w-4 text-muted-foreground" />
@@ -103,7 +103,7 @@ export default function Dashboard() {
 
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card>
+        <Card className="bg-white border-0 shadow-[0_-4px_6px_rgba(0,0,0,0.1),0_4px_6px_rgba(0,0,0,0.1)]">
           <CardHeader>
             <CardTitle>Weekly Sales</CardTitle>
             <CardDescription>Sales performance over the last 7 days</CardDescription>
@@ -115,13 +115,13 @@ export default function Dashboard() {
                 <XAxis dataKey="name" />
                 <YAxis />
                 <Tooltip />
-                <Bar dataKey="sales" fill="#8B4513" />
+                <Bar dataKey="sales" fill="#e5c570" />
               </BarChart>
             </ResponsiveContainer>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-white border-0 shadow-[0_-4px_6px_rgba(0,0,0,0.1),0_4px_6px_rgba(0,0,0,0.1)]">
           <CardHeader>
             <CardTitle>Order Trends</CardTitle>
             <CardDescription>Number of orders over the last 7 days</CardDescription>
@@ -133,7 +133,7 @@ export default function Dashboard() {
                 <XAxis dataKey="name" />
                 <YAxis />
                 <Tooltip />
-                <Line type="monotone" dataKey="orders" stroke="#D2B48C" strokeWidth={2} />
+                <Line type="monotone" dataKey="orders" stroke="#e5c570" strokeWidth={3} />
               </LineChart>
             </ResponsiveContainer>
           </CardContent>
@@ -142,7 +142,7 @@ export default function Dashboard() {
 
       {/* Tables */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <Card>
+        <Card className="bg-white border-0 shadow-[0_-4px_6px_rgba(0,0,0,0.1),0_4px_6px_rgba(0,0,0,0.1)]">
           <CardHeader>
             <CardTitle>Top Products</CardTitle>
             <CardDescription>Best selling items this week</CardDescription>
@@ -152,7 +152,7 @@ export default function Dashboard() {
               {topProducts.map((product, index) => (
                 <div key={product.name} className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-[#8B4513] text-white rounded-full flex items-center justify-center text-sm">
+                    <div className="w-8 h-8 bg-[#e5c570] text-white rounded-full flex items-center justify-center text-sm">
                       {index + 1}
                     </div>
                     <div>
@@ -167,7 +167,7 @@ export default function Dashboard() {
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="bg-white border-0 shadow-[0_-4px_6px_rgba(0,0,0,0.1),0_4px_6px_rgba(0,0,0,0.1)]">
           <CardHeader>
             <CardTitle>Recent Orders</CardTitle>
             <CardDescription>Latest customer orders</CardDescription>
