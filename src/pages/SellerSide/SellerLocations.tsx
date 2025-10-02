@@ -228,7 +228,7 @@ export default function SellerLocations() {
             {/* Add Location button */}
             <Dialog>
               <DialogTrigger asChild>
-                <Button className="bg-[#8B4513] hover:bg-[#A0522D] whitespace-nowrap">
+                <Button variant="coffee">
                   <Plus className="h-4 w-4 mr-2" />
                   Add Location
                 </Button>
