@@ -1,16 +1,19 @@
+import { useState } from "react";
 import Header from "../../components/layout/Header";
-import TitleHolder from "../../components/common/title-holder";
-import { Card, CardHeader, CardTitle, CardContent } from "../../components/common/card";
-import { Phone, Mail, MapPin } from "lucide-react";
-import Chat from "../../components/common/chat";
+import TitleHolder from "../../components/common/title-holder.js";
+import { Card, CardHeader, CardTitle, CardContent } from "../../components/common/card.js";
+import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
+import Chat from "../../components/common/chat.js";
+import { Button } from "../../components/common/button.js";
 
 const Contacts = () => {
+    const [isChatOpen, setIsChatOpen] = useState(false); // default closed
 
     return (
         <div className="h-screen w-full overflow-hidden relative">
             <div
                 className="h-full w-full overflow-auto pr-5"
-                style={{ scrollbarWidth: "none" }} // Firefox
+                style={{ scrollbarWidth: "none" }}
             >
                 {/* Hide scrollbar in Chromium browsers */}
                 <style>
@@ -34,10 +37,10 @@ const Contacts = () => {
                         DescriptionSize="text-xl"
                     />
 
-                    {/* Bigger Cards */}
+                    {/* Contact Cards Grid */}
                     <div className="mt-12 grid gap-10 md:grid-cols-2 lg:grid-cols-3 justify-center">
                         {/* Phone */}
-                        <Card className="h-full w-full max-w-md mx-auto bg-white border-0 drop-shadow-[0_-4px_6px_rgba(0,0,0,0.1)] shadow-lg p-6 md:p-8">
+                        <Card className="h-full w-full max-w-md mx-auto bg-white border-0 drop-shadow-md shadow-lg p-6 md:p-8">
                             <CardHeader>
                                 <CardTitle className="flex items-center justify-center space-x-3 text-xl">
                                     <Phone className="w-6 h-6 text-[#6c3608]" />
@@ -56,7 +59,7 @@ const Contacts = () => {
                         </Card>
 
                         {/* Email */}
-                        <Card className="h-full w-full max-w-md mx-auto bg-white border-0 drop-shadow-[0_-4px_6px_rgba(0,0,0,0.1)] shadow-lg p-6 md:p-8">
+                        <Card className="h-full w-full max-w-md mx-auto bg-white border-0 drop-shadow-md shadow-lg p-6 md:p-8">
                             <CardHeader>
                                 <CardTitle className="flex items-center justify-center space-x-3 text-xl">
                                     <Mail className="w-6 h-6 text-[#6c3608]" />
@@ -73,7 +76,7 @@ const Contacts = () => {
                         </Card>
 
                         {/* Headquarters */}
-                        <Card className="h-full w-full max-w-md mx-auto bg-white border-0 drop-shadow-[0_-4px_6px_rgba(0,0,0,0.1)] shadow-lg p-6 md:p-8">
+                        <Card className="h-full w-full max-w-md mx-auto bg-white border-0 drop-shadow-md shadow-lg p-6 md:p-8">
                             <CardHeader>
                                 <CardTitle className="flex items-center justify-center space-x-3 text-xl">
                                     <MapPin className="w-6 h-6 text-[#6c3608]" />
@@ -89,12 +92,35 @@ const Contacts = () => {
                             </CardContent>
                         </Card>
                     </div>
+
+                    {/* Live Chat Card Below */}
+                    <div className="mt-12 flex justify-center">
+                        <Card className="w-96 bg-white border-0 drop-shadow-lg shadow-lg p-6 text-center">
+                            <CardHeader>
+                                <CardTitle className="flex items-center justify-center space-x-3 text-xl">
+                                    <MessageCircle className="w-6 h-6 text-[#6c3608]" />
+                                    <span>Live Chat</span>
+                                </CardTitle>
+                            </CardHeader>
+                            <CardContent className="flex flex-col items-center">
+                                <p className="text-sm text-gray-600 mb-4">
+                                    Need instant help? Start a chat with us.
+                                </p>
+                                <Button
+                                    onClick={() => setIsChatOpen(true)}
+                                    variant="coffee"
+                                    className="w-full"
+                                >
+                                    Chat with us
+                                </Button>
+                            </CardContent>
+                        </Card>
+                    </div>
                 </div>
             </div>
 
-            {/* Floating Chat */}
-            <Chat />
-
+            {/* Floating Chat at Bottom Right */}
+            <Chat chatOpen={isChatOpen} setChatOpen={setIsChatOpen} />
         </div>
     );
 };

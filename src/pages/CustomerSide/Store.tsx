@@ -1,6 +1,6 @@
 import Header from "../../components/layout/Header";
 import { CoffeeCarousel } from "../../components/layout/CoffeeCarousel";
-import { ProductCard } from "../../components/layout/ProductCard";
+import { ProductCard } from "../../components/layout/ProductCard.js";
 import ProductDivider from "../../components/layout/ProductDivider";
 import TitleHolder from "../../components/common/title-holder"
 

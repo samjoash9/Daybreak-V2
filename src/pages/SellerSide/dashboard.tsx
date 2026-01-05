@@ -1,5 +1,5 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/common/card';
-import { Badge } from '../../components/common/badge';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/common/card.js';
+import { Badge } from '../../components/common/badge.js';
 import {
   TrendingUp,
   TrendingDown,

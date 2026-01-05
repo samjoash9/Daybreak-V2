@@ -233,7 +233,7 @@ export default function SellerLocations() {
                   Add Location
                 </Button>
               </DialogTrigger>
-              <DialogContent className="max-w-md">
+              <DialogContent className="max-w-md bg-white">
                 <DialogHeader>
                   <DialogTitle>Add New Location</DialogTitle>
                   <DialogDescription>Add a new branch to your cafe network</DialogDescription>
@@ -276,7 +276,7 @@ export default function SellerLocations() {
                       </SelectContent>
                     </Select>
                   </div>
-                  <Button className="w-full bg-[#8B4513] hover:bg-[#A0522D]">
+                  <Button className="w-full" variant="coffee">
                     Add Location
                   </Button>
                 </div>

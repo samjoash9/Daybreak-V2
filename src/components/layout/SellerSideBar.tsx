@@ -8,8 +8,9 @@ import {
     Coffee,
     Menu,
     X,
+    MessageCircle,
 } from "lucide-react";
-import { Button } from "../common/button";
+import { Button } from "../common/button.js";
 import { NavLink } from "react-router-dom";
 
 export function SellerSidebar() {
@@ -21,6 +22,7 @@ export function SellerSidebar() {
         { id: "orders", label: "Orders", icon: ShoppingCart },
         { id: "inventory", label: "Inventory", icon: Warehouse },
         { id: "locations", label: "Locations", icon: MapPin },
+        { id: "messages", label: "Messages", icon: MessageCircle },
     ];
 
     return (

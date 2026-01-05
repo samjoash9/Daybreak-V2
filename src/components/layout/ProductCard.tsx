@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { ChevronDownIcon } from 'lucide-react'
-import { Button } from '../common/button'
+import { Button } from '../common/button.js'
 
 type Size = 'SMALL' | 'LARGE'
 
@@ -47,7 +47,7 @@ export function ProductCard({
     }
 
     return (
-        <div className="w-full max-w-xs bg-[#fce7c7] rounded-lg overflow-hidden shadow-md" >
+        <div className="w-full max-w-xs bg-[#fce7c7] rounded-lg overflow-visible shadow-md" >
             <div className="p-4 flex flex-col items-center">
                 {/* Product Image */}
                 <img src={image} alt={name} className="w-48 h-auto object-contain mb-2" />
@@ -99,16 +99,12 @@ export function ProductCard({
                     )}
                 </div>
 
-                {/* Add to Cart Button */}
-
-
-
-                <button
-                    className="w-full py-3 bg-[#5e341c] text-white font-bold uppercase hover:bg-[#4e2a14] transition-colors"
+                <Button
+                    className="w-full py-3 bg-[#5e341c] text-white font-bold uppercase hover:bg-[#e5c570] transition-colors"
                     onClick={handleAddToCart}
                 >
                     Add to Cart
-                </button>
+                </Button>
             </div>
         </div>
     )

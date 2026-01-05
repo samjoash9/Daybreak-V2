@@ -8,7 +8,7 @@ export default function SellerLayout() {
             <SellerSidebar />
 
             {/* Right: the page that matches the nested seller route */}
-            <main className="flex-1 overflow-auto p-6">
+            <main className="flex-1 overflow-auto">
                 <Outlet />
             </main>
         </div>

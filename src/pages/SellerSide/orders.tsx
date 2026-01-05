@@ -228,7 +228,7 @@ export default function Orders() {
                   <Filter className="h-4 w-4 mr-2" />
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white">
                   <SelectItem value="all">All Status</SelectItem>
                   <SelectItem value="pending">Pending</SelectItem>
                   <SelectItem value="processing">Processing</SelectItem>
@@ -274,7 +274,7 @@ export default function Orders() {
                         View Details
                       </Button>
                     </DialogTrigger>
-                    <DialogContent className="max-w-md">
+                    <DialogContent className="max-w-md bg-white">
                       <DialogHeader>
                         <DialogTitle>Order Details - {order.id}</DialogTitle>
                         <DialogDescription>Complete order information</DialogDescription>

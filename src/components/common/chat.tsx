@@ -1,10 +1,12 @@
-import { useState } from "react";
 import { MessageCircle } from "lucide-react";
-import { Button } from "./button";
+import { Button } from "./button.js";
 
-const Chat = () => {
-    const [chatOpen, setChatOpen] = useState(false);
+interface ChatProps {
+    chatOpen: boolean;
+    setChatOpen: (open: boolean) => void;
+}
 
+const Chat = ({ chatOpen, setChatOpen }: ChatProps) => {
     return (
         <div className="fixed bottom-6 right-6 z-50">
             {chatOpen ? (
@@ -31,9 +33,7 @@ const Chat = () => {
                             placeholder="Type a message..."
                             className="flex-1 px-3 py-2 border rounded-lg text-sm focus:outline-none"
                         />
-                        <Button className="" variant="coffee">
-                            Send
-                        </Button>
+                        <Button variant="coffee">Send</Button>
                     </div>
                 </div>
             ) : (

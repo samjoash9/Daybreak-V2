@@ -230,7 +230,7 @@ export default function Inventory() {
                   <Filter className="h-4 w-4 mr-2" />
                   <SelectValue placeholder="Category" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white">
                   <SelectItem value="all">All Categories</SelectItem>
                   <SelectItem value="Raw Materials">Raw Materials</SelectItem>
                   <SelectItem value="Dairy">Dairy</SelectItem>
@@ -249,7 +249,7 @@ export default function Inventory() {
                     Add Item
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="max-w-md">
+                <DialogContent className="max-w-md bg-white">
                   <DialogHeader>
                     <DialogTitle>Add Inventory Item</DialogTitle>
                     <DialogDescription>Add a new item to track in your inventory</DialogDescription>
@@ -303,7 +303,9 @@ export default function Inventory() {
                       <Label htmlFor="supplier">Supplier</Label>
                       <Input id="supplier" placeholder="Supplier name" />
                     </div>
-                    <Button className="w-full bg-[#8B4513] hover:bg-[#A0522D]">Add Item</Button>
+                    <Button className="w-full" variant="coffee">
+                      Add Item
+                    </Button>
                   </div>
                 </DialogContent>
               </Dialog>

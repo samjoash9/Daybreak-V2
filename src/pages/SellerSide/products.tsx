@@ -185,7 +185,7 @@ export default function Products() {
                 <Filter className="h-4 w-4 mr-2" />
                 <SelectValue />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white">
                 <SelectItem value="all">All Categories</SelectItem>
                 <SelectItem value="Hot Drinks">Hot Drinks</SelectItem>
                 <SelectItem value="Cold Drinks">Cold Drinks</SelectItem>
@@ -201,7 +201,7 @@ export default function Products() {
                   Add Product
                 </Button>
               </DialogTrigger>
-              <DialogContent className="max-w-md">
+              <DialogContent className="max-w-md bg-white">
                 <DialogHeader>
                   <DialogTitle>Add New Product</DialogTitle>
                   <DialogDescription>Create a new menu item for your cafe</DialogDescription>
@@ -237,7 +237,7 @@ export default function Products() {
                     <Label htmlFor="product-description">Description</Label>
                     <Textarea id="product-description" placeholder="Product description..." />
                   </div>
-                  <Button className="w-full bg-[#8B4513] hover:bg-[#A0522D]">
+                  <Button className="w-full" variant="coffee">
                     Add Product
                   </Button>
                 </div>

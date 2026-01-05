@@ -15,6 +15,7 @@ import Products from './pages/SellerSide/products'
 import Orders from './pages/SellerSide/orders'
 import SellerLocations from './pages/SellerSide/SellerLocations'
 import Inventory from './pages/SellerSide/inventory'
+import Messages from './pages/SellerSide/messages'
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
         <Route path="orders" element={<Orders />} />
         <Route path="locations" element={<SellerLocations />} />
         <Route path="inventory" element={<Inventory />} />
+        <Route path="messages" element={<Messages />} />
 
       </Route>
     </Routes>
