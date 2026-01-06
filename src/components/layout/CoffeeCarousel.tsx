@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { ChevronLeftIcon, ChevronRightIcon, ArrowRightIcon } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
 
 const coffeeItems = [
     {
@@ -90,37 +91,123 @@ const coffeeItems = [
 
 export function CoffeeCarousel() {
     const [currentIndex, setCurrentIndex] = useState(0)
+    const navigate = useNavigate()
+    const autoSlideIntervalRef = useRef<number | null>(null)
+    const [isHovered, setIsHovered] = useState(false)
 
-    const prevSlide = () =>
-        setCurrentIndex(currentIndex === 0 ? coffeeItems.length - 1 : currentIndex - 1)
-    const nextSlide = () =>
-        setCurrentIndex(currentIndex === coffeeItems.length - 1 ? 0 : currentIndex + 1)
+    // Preload all images
+    useEffect(() => {
+        const imagesToPreload: string[] = []
+        
+        coffeeItems.forEach((item) => {
+            // Preload background images
+            if (item.background) {
+                imagesToPreload.push(`/${item.background}`)
+            }
+            // Preload product images
+            item.items.forEach((product) => {
+                imagesToPreload.push(`/${product.image}`)
+            })
+        })
+
+        imagesToPreload.forEach((src) => {
+            const img = document.createElement('img')
+            img.src = src
+        })
+    }, [])
+
+    // Auto-slide functionality
+    useEffect(() => {
+        // Clear any existing interval
+        if (autoSlideIntervalRef.current !== null) {
+            window.clearInterval(autoSlideIntervalRef.current)
+            autoSlideIntervalRef.current = null
+        }
+
+        // Only auto-slide if not hovered
+        if (!isHovered) {
+            autoSlideIntervalRef.current = window.setInterval(() => {
+                setCurrentIndex((prevIndex) => 
+                    prevIndex === coffeeItems.length - 1 ? 0 : prevIndex + 1
+                )
+            }, 5000) // Change slide every 5 seconds
+        }
+
+        // Cleanup on unmount or when hover state changes
+        return () => {
+            if (autoSlideIntervalRef.current !== null) {
+                window.clearInterval(autoSlideIntervalRef.current)
+                autoSlideIntervalRef.current = null
+            }
+        }
+    }, [isHovered])
+
+    const prevSlide = () => {
+        setCurrentIndex((prev) => prev === 0 ? coffeeItems.length - 1 : prev - 1)
+    }
+
+    const nextSlide = () => {
+        setCurrentIndex((prev) => prev === coffeeItems.length - 1 ? 0 : prev + 1)
+    }
+
+    const handleAddToCartNow = () => {
+        const currentItem = coffeeItems[currentIndex]
+        if (!currentItem) return
+        
+        let sectionId = ''
+        
+        // Map carousel titles to section IDs on the store page
+        if (currentItem.title === 'ICED COFFEE') {
+            sectionId = 'iced-coffee'
+        } else if (currentItem.title === 'BERRY SERIES') {
+            sectionId = 'berry-series'
+        } else if (currentItem.title === 'SODA SERIES') {
+            sectionId = 'soda-series'
+        }
+        
+        // Navigate to store page with hash for scrolling
+        navigate(`/store#${sectionId}`)
+        
+        // Scroll to section after navigation (small delay to ensure page loads)
+        window.setTimeout(() => {
+            const element = document.getElementById(sectionId)
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+            }
+        }, 100)
+    }
 
     return (
-        <div className="relative w-screen">
+        <div 
+            className="relative w-screen"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
             {/* CAROUSEL */}
 
             <div className="relative w-full h-[700px] overflow-hidden">
-                {/* Dynamic gradient */}
-                <div className={`absolute inset-0 z-0 ${coffeeItems[currentIndex].gradient}`} />
+                {coffeeItems[currentIndex] && (
+                    <>
+                        {/* Dynamic gradient */}
+                        <div className={`absolute inset-0 z-0 ${coffeeItems[currentIndex].gradient}`} />
 
-                {/* Optional splash background */}
-                {coffeeItems[currentIndex].background && (
-                    <img
-                        src={coffeeItems[currentIndex].background}
-                        alt=""
-                        className="absolute inset-0 w-full h-full z-0"
-                    />
-                )}
+                        {/* Optional splash background */}
+                        {coffeeItems[currentIndex].background && (
+                            <img
+                                src={coffeeItems[currentIndex].background}
+                                alt=""
+                                className="absolute inset-0 w-full h-full z-0"
+                            />
+                        )}
 
-                {/* Content */}
-                <div className="absolute inset-0 z-20 flex flex-col items-center pt-8">
-                    <h1 className="text-4xl md:text-5xl font-bold text-[#4a2c09] mt-4">
-                        {coffeeItems[currentIndex].title}
-                    </h1>
+                        {/* Content */}
+                        <div className="absolute inset-0 z-20 flex flex-col items-center pt-8">
+                            <h1 className="text-4xl md:text-5xl font-bold text-[#4a2c09] mt-4">
+                                {coffeeItems[currentIndex].title}
+                            </h1>
 
-                    <div className="relative w-full h-[500px] md:h-[600px]">
-                        {coffeeItems[currentIndex].items.map((item, idx) => (
+                            <div className="relative w-full h-[500px] md:h-[600px]">
+                                {coffeeItems[currentIndex].items.map((item, idx) => (
                             <div
                                 key={idx}
                                 className={`absolute flex flex-col items-center ${item.position}`}
@@ -134,18 +221,21 @@ export function CoffeeCarousel() {
                                     className="max-h-[70%] w-auto object-contain drop-shadow-xl"
                                 />
                             </div>
-                        ))}
-                    </div>
+                                ))}
+                            </div>
 
-                    <button
-                        className="absolute bottom-20 right-[35%] bg-[#4a2c09] text-white 
-                        py-3 px-6 rounded-full flex items-center gap-2
-                        hover:bg-[#3a2208] transition-colors text-2xl"
-                    >
-                        Add to Cart Now
-                        <ArrowRightIcon size={30} />
-                    </button>
-                </div>
+                            <button
+                                onClick={handleAddToCartNow}
+                                className="absolute bottom-20 right-[35%] bg-[#4a2c09] text-white 
+                                py-3 px-6 rounded-full flex items-center gap-2
+                                hover:bg-[#3a2208] transition-colors text-2xl cursor-pointer"
+                            >
+                                Add to Cart Now
+                                <ArrowRightIcon size={30} />
+                            </button>
+                        </div>
+                    </>
+                )}
 
                 {/* Navigation */}
                 <button

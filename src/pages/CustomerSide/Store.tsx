@@ -3,6 +3,8 @@ import { CoffeeCarousel } from "../../components/layout/CoffeeCarousel";
 import { ProductCard } from "../../components/layout/ProductCard.js";
 import ProductDivider from "../../components/layout/ProductDivider";
 import TitleHolder from "../../components/common/title-holder"
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const iced_coffee = [
     { id: 1, name: "CARAMEL ICED LATTE", price: 39, image: "/Products/caramel_iced_latte.png" },
@@ -29,6 +31,22 @@ const soda_series = [
 ]
 
 const Store = () => {
+    const location = useLocation();
+
+    // Handle scrolling to section when hash is present in URL
+    useEffect(() => {
+        if (location.hash) {
+            const sectionId = location.hash.substring(1); // Remove the # symbol
+            const element = document.getElementById(sectionId);
+            if (element) {
+                // Small delay to ensure page is rendered
+                setTimeout(() => {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 300);
+            }
+        }
+    }, [location.hash]);
+
     return (
         <div className="h-screen w-full overflow-hidden">
             <div
@@ -57,7 +75,9 @@ const Store = () => {
                     Bold={true}
                 />
 
-                <ProductDivider Title="ICED COFFEE" Description="OUR MOST POPULAR ICED COFFEES" Color="#fce7c7" />
+                <div id="iced-coffee">
+                    <ProductDivider Title="ICED COFFEE" Description="OUR MOST POPULAR ICED COFFEES" Color="#fce7c7" />
+                </div>
 
                 {/* Dynamic Product Cards */}
                 <div className="flex justify-center mt-10">
@@ -74,7 +94,9 @@ const Store = () => {
                     </div>
                 </div>
 
-                <ProductDivider Title="BERRY SERIES" Description="DISCOVER OUR BERRY BEST CREATION" Color="#fce7c7" />
+                <div id="berry-series">
+                    <ProductDivider Title="BERRY SERIES" Description="DISCOVER OUR BERRY BEST CREATION" Color="#fce7c7" />
+                </div>
 
                 {/* Dynamic Product Cards */}
                 <div className="flex justify-center mt-10">
@@ -91,7 +113,9 @@ const Store = () => {
                     </div>
                 </div>
 
-                <ProductDivider Title="SODA SERIES" Description="FIZZ UP YOUR DAY WITH OUR REFRESHING SODAS" Color="#fce7c7" />
+                <div id="soda-series">
+                    <ProductDivider Title="SODA SERIES" Description="FIZZ UP YOUR DAY WITH OUR REFRESHING SODAS" Color="#fce7c7" />
+                </div>
 
                 {/* Dynamic Product Cards */}
                 <div className="flex justify-center mt-10">

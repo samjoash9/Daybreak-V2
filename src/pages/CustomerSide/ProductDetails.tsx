@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import { ChevronDownIcon, ArrowLeft, Star, Check } from 'lucide-react';
 import type { Size } from '../../context/CartContext';
 
-// Product data - in a real app, this would come from an API
+// dummy data
 const allProducts = [
   { id: 1, name: "CARAMEL ICED LATTE", price: 39, image: "/Products/caramel_iced_latte.png", description: "A refreshing blend of espresso, caramel syrup, and cold milk over ice. Perfect for those who love a sweet, creamy coffee experience.", category: "ICED COFFEE" },
   { id: 2, name: "FRENCH VANILLA", price: 39, image: "/Products/french_vanilla.png", description: "Smooth and creamy French vanilla coffee with a hint of sweetness. A classic favorite that never disappoints.", category: "ICED COFFEE" },
@@ -36,7 +36,6 @@ const ProductDetails = () => {
   const product = allProducts.find((p) => p.id === parseInt(id || '0'));
 
   useEffect(() => {
-    // Scroll to top when component mounts
     window.scrollTo(0, 0);
   }, [id]);
 

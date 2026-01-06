@@ -11,7 +11,9 @@
     "types": [],
     // For nodejs:
     "lib": [
-      "esnext"
+      "esnext",
+      "dom",
+      "dom.iterable"
     ],
     // "types": ["node"],
     // and npm install -D @types/node
