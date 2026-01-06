@@ -75,21 +75,13 @@ const MyCheckout = () => {
             <h1 className="text-4xl font-bold text-[#3a2a18]">My Checkout</h1>
             <p className="text-[#3a2a18] mt-2">Track your orders and their current status.</p>
           </div>
-          <div className="flex gap-3">
-            <Button
-              variant="outline"
-              className="border-2 border-[#3a2a18] text-[#3a2a18] hover:bg-[#e5c570]"
-              onClick={() => navigate('/store')}
-            >
-              Shop More
-            </Button>
-            <Button
-              className="bg-[#5e341c] text-white hover:bg-[#e5c570] hover:text-[#3a2a18]"
-              onClick={() => navigate('/checkout')}
-            >
-              Go to Checkout
-            </Button>
-          </div>
+          <Button
+            variant="outline"
+            className="border-2 border-[#3a2a18] text-[#3a2a18] hover:bg-[#e5c570]"
+            onClick={() => navigate('/store')}
+          >
+            Shop More
+          </Button>
         </div>
 
         <div className="bg-white rounded-xl shadow-md p-4 sm:p-6">
@@ -134,14 +126,6 @@ const MyCheckout = () => {
                     <div className="text-right space-y-2">
                       <p className="text-2xl font-bold text-[#3a2a18]">₱{order.total}</p>
                       <p className="text-sm text-gray-700">{order.eta}</p>
-                      {order.status === 'to_pay' && (
-                        <Button
-                          className="w-full sm:w-auto bg-[#5e341c] text-white hover:bg-[#e5c570] hover:text-[#3a2a18]"
-                          onClick={() => navigate('/checkout')}
-                        >
-                          Pay Now
-                        </Button>
-                      )}
                       {order.status === 'ready' && (
                         <Button
                           variant="outline"

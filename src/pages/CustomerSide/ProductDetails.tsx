@@ -6,23 +6,23 @@ import { useState, useEffect } from 'react';
 import { ChevronDownIcon, ArrowLeft, Star, Check } from 'lucide-react';
 import type { Size } from '../../context/CartContext';
 
-// Product data - in a real app, this would come from an API
+// dummy data
 const allProducts = [
   { id: 1, name: "CARAMEL ICED LATTE", price: 39, image: "/Products/caramel_iced_latte.png", description: "A refreshing blend of espresso, caramel syrup, and cold milk over ice. Perfect for those who love a sweet, creamy coffee experience.", category: "ICED COFFEE" },
   { id: 2, name: "FRENCH VANILLA", price: 39, image: "/Products/french_vanilla.png", description: "Smooth and creamy French vanilla coffee with a hint of sweetness. A classic favorite that never disappoints.", category: "ICED COFFEE" },
   { id: 3, name: "MATCHA LATTE", price: 39, image: "/Products/matcha_latte.png", description: "Premium matcha green tea powder mixed with steamed milk. A healthy and energizing alternative to coffee.", category: "ICED COFFEE" },
   { id: 4, name: "SALTED CARAMEL", price: 39, image: "/Products/salted_caramel.png", description: "The perfect balance of sweet caramel and a touch of salt. A sophisticated flavor profile that delights the palate.", category: "ICED COFFEE" },
   { id: 5, name: "SPANISH LATTE", price: 39, image: "/Products/spanish_latte.png", description: "Rich espresso combined with condensed milk for a uniquely sweet and creamy Spanish-style coffee.", category: "ICED COFFEE" },
-  { id: 6, name: "CARAMEL ICED LATTE", price: 39, image: "/Products/caramel_iced_latte.png", description: "A refreshing blend of espresso, caramel syrup, and cold milk over ice. Perfect for those who love a sweet, creamy coffee experience.", category: "BERRY SERIES" },
-  { id: 7, name: "FRENCH VANILLA", price: 39, image: "/Products/french_vanilla.png", description: "Smooth and creamy French vanilla coffee with a hint of sweetness. A classic favorite that never disappoints.", category: "BERRY SERIES" },
-  { id: 8, name: "MATCHA LATTE", price: 39, image: "/Products/matcha_latte.png", description: "Premium matcha green tea powder mixed with steamed milk. A healthy and energizing alternative to coffee.", category: "BERRY SERIES" },
-  { id: 9, name: "SALTED CARAMEL", price: 39, image: "/Products/salted_caramel.png", description: "The perfect balance of sweet caramel and a touch of salt. A sophisticated flavor profile that delights the palate.", category: "BERRY SERIES" },
-  { id: 10, name: "SPANISH LATTE", price: 39, image: "/Products/spanish_latte.png", description: "Rich espresso combined with condensed milk for a uniquely sweet and creamy Spanish-style coffee.", category: "BERRY SERIES" },
-  { id: 11, name: "CARAMEL ICED LATTE", price: 39, image: "/Products/caramel_iced_latte.png", description: "A refreshing blend of espresso, caramel syrup, and cold milk over ice. Perfect for those who love a sweet, creamy coffee experience.", category: "SODA SERIES" },
-  { id: 12, name: "FRENCH VANILLA", price: 39, image: "/Products/french_vanilla.png", description: "Smooth and creamy French vanilla coffee with a hint of sweetness. A classic favorite that never disappoints.", category: "SODA SERIES" },
-  { id: 13, name: "MATCHA LATTE", price: 39, image: "/Products/matcha_latte.png", description: "Premium matcha green tea powder mixed with steamed milk. A healthy and energizing alternative to coffee.", category: "SODA SERIES" },
-  { id: 14, name: "SALTED CARAMEL", price: 39, image: "/Products/salted_caramel.png", description: "The perfect balance of sweet caramel and a touch of salt. A sophisticated flavor profile that delights the palate.", category: "SODA SERIES" },
-  { id: 15, name: "SPANISH LATTE", price: 39, image: "/Products/spanish_latte.png", description: "Rich espresso combined with condensed milk for a uniquely sweet and creamy Spanish-style coffee.", category: "SODA SERIES" },
+  { id: 6, name: "CHOCOLATE BERRY", price: 39, image: "/Products/chocolate_berry.png", description: "A delightful combination of rich chocolate and fresh berries. A perfect blend of sweetness and tartness that will satisfy your cravings.", category: "BERRY SERIES" },
+  { id: 7, name: "MATCHA BERRY", price: 39, image: "/Products/matcha_berry.png", description: "Premium matcha green tea paired with sweet berries. A refreshing and healthy drink with a unique flavor profile.", category: "BERRY SERIES" },
+  { id: 8, name: "STRAWBERRY", price: 39, image: "/Products/strawberry.png", description: "Fresh, juicy strawberries blended to perfection. A classic fruity drink that's both refreshing and delicious.", category: "BERRY SERIES" },
+  { id: 9, name: "STRAWBERRY MILK", price: 39, image: "/Products/strawberry_milk.png", description: "Creamy milk infused with sweet strawberry flavor. A nostalgic favorite that brings back childhood memories.", category: "BERRY SERIES" },
+  { id: 10, name: "WHITE CHOCOLATE BERRY", price: 39, image: "/Products/white_chocolate_berry.png", description: "Smooth white chocolate combined with fresh berries. An indulgent treat that's both creamy and fruity.", category: "BERRY SERIES" },
+  { id: 11, name: "BLUE BERRY", price: 39, image: "/Products/blue_berry.png", description: "Refreshing blueberry soda with a burst of fruity flavor. Perfect for a hot day when you need something cool and invigorating.", category: "SODA SERIES" },
+  { id: 12, name: "GREEN APPLE", price: 39, image: "/Products/green_apple.png", description: "Crisp and tangy green apple soda. A refreshing drink that combines the sweetness of apples with a fizzy twist.", category: "SODA SERIES" },
+  { id: 13, name: "PASSION FRUIT", price: 39, image: "/Products/passion_fruit.png", description: "Tropical passion fruit soda with an exotic flavor. A unique and refreshing drink that transports you to paradise.", category: "SODA SERIES" },
+  { id: 14, name: "STRAWBERRY", price: 39, image: "/Products/strawberry.png", description: "Sweet strawberry soda with a bubbly fizz. A classic fruity drink that's perfect for any occasion.", category: "SODA SERIES" },
+  { id: 15, name: "KIWI", price: 39, image: "/Products/kiwi.png", description: "Fresh kiwi soda with a tropical twist. A unique and refreshing drink that's both sweet and tangy.", category: "SODA SERIES" },
 ];
 
 const ProductDetails = () => {
@@ -36,7 +36,6 @@ const ProductDetails = () => {
   const product = allProducts.find((p) => p.id === parseInt(id || '0'));
 
   useEffect(() => {
-    // Scroll to top when component mounts
     window.scrollTo(0, 0);
   }, [id]);
 

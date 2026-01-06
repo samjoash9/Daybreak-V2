@@ -3,7 +3,7 @@ import Header from "../../components/layout/Header";
 import TitleHolder from "../../components/common/title-holder.js";
 import { Card, CardHeader, CardTitle, CardContent } from "../../components/common/card.js";
 import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
-import Chat from "../../components/common/chat.js";
+import AIChat from "../../components/common/AIChat.js";
 import { Button } from "../../components/common/button.js";
 
 const Contacts = () => {
@@ -119,8 +119,8 @@ const Contacts = () => {
                 </div>
             </div>
 
-            {/* Floating Chat at Bottom Right */}
-            <Chat chatOpen={isChatOpen} setChatOpen={setIsChatOpen} />
+            {/* AI-Powered Chat at Bottom Right */}
+            <AIChat chatOpen={isChatOpen} setChatOpen={setIsChatOpen} />
         </div>
     );
 };
