@@ -1,10 +1,14 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { ChevronDownIcon } from 'lucide-react'
 import { Button } from '../common/button.js'
+import { useNavigate } from 'react-router-dom'
+import { useCart } from '../../context/CartContext'
+import { Check } from 'lucide-react'
 
 type Size = 'SMALL' | 'LARGE'
 
 interface ProductCardProps {
+    id: number
     name: string
     price: number
     image: string
@@ -13,14 +17,18 @@ interface ProductCardProps {
 }
 
 export function ProductCard({
+    id,
     name,
     price,
     image,
     reviews = 0,
     onAddToCart,
 }: ProductCardProps) {
+    const navigate = useNavigate()
+    const { addToCart } = useCart()
     const [size, setSize] = useState<Size>('SMALL')
     const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+    const [addedToCart, setAddedToCart] = useState(false)
     const dropdownRef = useRef<HTMLDivElement>(null)
 
     // Close dropdown when clicking outside
@@ -39,21 +47,41 @@ export function ProductCard({
         setIsDropdownOpen(false)
     }
 
-    const handleAddToCart = () => {
+    const handleAddToCart = (e: React.MouseEvent) => {
+        e.stopPropagation() // Prevent navigation when clicking add to cart
+        addToCart({
+            id,
+            name,
+            price,
+            image,
+            size,
+        })
         if (onAddToCart) {
             onAddToCart(size)
         }
-        console.log(`Added ${name} (${size}) to cart`)
+        setAddedToCart(true)
+        setTimeout(() => setAddedToCart(false), 2000)
+    }
+
+    const handleCardClick = () => {
+        navigate(`/product/${id}`)
     }
 
     return (
-        <div className="w-full max-w-xs bg-[#fce7c7] rounded-lg overflow-visible shadow-md" >
+        <div className="w-full max-w-xs bg-[#fce7c7] rounded-lg overflow-visible shadow-md hover:shadow-lg transition-shadow cursor-pointer" >
             <div className="p-4 flex flex-col items-center">
-                {/* Product Image */}
-                <img src={image} alt={name} className="w-48 h-auto object-contain mb-2" />
+                {/* Product Image - Clickable */}
+                <div onClick={handleCardClick} className="cursor-pointer">
+                    <img src={image} alt={name} className="w-48 h-auto object-contain mb-2 hover:scale-105 transition-transform" />
+                </div>
 
-                {/* Product Name */}
-                <h2 className="text-xl font-bold text-[#3a2a18] mt-2">{name}</h2>
+                {/* Product Name - Clickable */}
+                <h2 
+                    onClick={handleCardClick} 
+                    className="text-xl font-bold text-[#3a2a18] mt-2 cursor-pointer hover:text-[#e5c570] transition-colors"
+                >
+                    {name}
+                </h2>
 
                 {/* Reviews */}
                 <div className="flex items-center mt-1 mb-1">
@@ -100,10 +128,18 @@ export function ProductCard({
                 </div>
 
                 <Button
-                    className="w-full py-3 bg-[#5e341c] text-white font-bold uppercase hover:bg-[#e5c570] transition-colors"
+                    className="w-full py-3 bg-[#5e341c] text-white font-bold uppercase hover:bg-[#e5c570] transition-colors flex items-center justify-center gap-2"
                     onClick={handleAddToCart}
+                    disabled={addedToCart}
                 >
-                    Add to Cart
+                    {addedToCart ? (
+                        <>
+                            <Check size={18} />
+                            Added!
+                        </>
+                    ) : (
+                        'Add to Cart'
+                    )}
                 </Button>
             </div>
         </div>

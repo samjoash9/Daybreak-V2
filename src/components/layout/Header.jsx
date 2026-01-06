@@ -1,13 +1,18 @@
 import React from "react";
 import HeaderButton from "../common/HeaderButton";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
+import { ShoppingCart } from "lucide-react";
+import { useCart } from "../../context/CartContext";
 
 const Header = ({ AuthButtonTitle = "Login" }) => {
     const navigate = useNavigate();
     const location = useLocation();
+    const { getTotalItems } = useCart();
 
     // helper to check if the link is the current path
     const isActive = (path) => location.pathname === path;
+    
+    const cartItemCount = getTotalItems();
 
     return (
         <header className="flex items-center h-24 justify-between px-32">
@@ -56,6 +61,26 @@ const Header = ({ AuthButtonTitle = "Login" }) => {
                 >
                     About
                 </a>
+                <a
+                    href="/my-checkout"
+                    className={`${isActive("/my-checkout") ? "underline underline-offset-4 text-[#e5c570]" : ""}`}
+                >
+                    My Checkout
+                </a>
+
+                {/* Shopping Cart Icon */}
+                <Link
+                    to="/cart"
+                    className="relative flex items-center justify-center p-2 hover:bg-[#e5c570] rounded-full transition-colors"
+                    aria-label="Shopping Cart"
+                >
+                    <ShoppingCart className="text-[#6c3608]" size={28} />
+                    {cartItemCount > 0 && (
+                        <span className="absolute -top-1 -right-1 bg-[#e5c570] text-[#3a2a18] rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold border-2 border-[#6c3608]">
+                            {cartItemCount > 99 ? '99+' : cartItemCount}
+                        </span>
+                    )}
+                </Link>
 
                 {/* Auth button */}
                 <HeaderButton ButtonTitle={AuthButtonTitle} />

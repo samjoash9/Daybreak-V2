@@ -8,6 +8,10 @@ import Store from './pages/CustomerSide/Store'
 import Locations from './pages/CustomerSide/Locations'
 import Contacts from './pages/CustomerSide/Contacts'
 import About from './pages/CustomerSide/About'
+import ProductDetails from './pages/CustomerSide/ProductDetails'
+import ShoppingCart from './pages/CustomerSide/ShoppingCart'
+import Checkout from './pages/CustomerSide/Checkout'
+import MyCheckout from './pages/CustomerSide/MyCheckout'
 
 import SellerLayout from "./components/layout/SellerLayout";
 import Dashboard from './pages/SellerSide/dashboard'
@@ -25,6 +29,10 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignUp />} />
       <Route path="/store" element={<Store />} />
+      <Route path="/product/:id" element={<ProductDetails />} />
+      <Route path="/cart" element={<ShoppingCart />} />
+      <Route path="/checkout" element={<Checkout />} />
+      <Route path="/my-checkout" element={<MyCheckout />} />
       <Route path="/locations" element={<Locations />} />
       <Route path="/contacts" element={<Contacts />} />
       <Route path="/about" element={<About />} />

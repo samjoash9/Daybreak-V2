@@ -65,6 +65,7 @@ const Store = () => {
                         {iced_coffee.map((product) => (
                             <ProductCard
                                 key={product.id}
+                                id={product.id}
                                 name={product.name}
                                 price={product.price}
                                 image={product.image}
@@ -81,6 +82,7 @@ const Store = () => {
                         {berry_series.map((product) => (
                             <ProductCard
                                 key={product.id}
+                                id={product.id}
                                 name={product.name}
                                 price={product.price}
                                 image={product.image}
@@ -97,6 +99,7 @@ const Store = () => {
                         {soda_series.map((product) => (
                             <ProductCard
                                 key={product.id}
+                                id={product.id}
                                 name={product.name}
                                 price={product.price}
                                 image={product.image}
