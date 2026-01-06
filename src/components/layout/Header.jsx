@@ -15,7 +15,7 @@ const Header = ({ AuthButtonTitle = "Login" }) => {
     const cartItemCount = getTotalItems();
 
     return (
-        <header className="flex items-center h-24 justify-between px-32">
+        <header className="flex flex-wrap items-center justify-between gap-4 px-6 py-4 sm:px-10 md:px-16 lg:px-24">
             {/* LOGO */}
             <div
                 className="flex items-center cursor-pointer"
@@ -36,7 +36,7 @@ const Header = ({ AuthButtonTitle = "Login" }) => {
             </div>
 
             {/* NAVIGATIONS */}
-            <nav className="flex gap-12 text-[#6c3608] text-2xl items-center">
+            <nav className="flex flex-wrap gap-4 sm:gap-6 md:gap-8 lg:gap-12 text-[#6c3608] text-base sm:text-lg md:text-xl lg:text-2xl items-center justify-end">
                 <a
                     href="/store"
                     className={`${isActive("/store") ? "underline underline-offset-4 text-[#e5c570]" : ""}`}
