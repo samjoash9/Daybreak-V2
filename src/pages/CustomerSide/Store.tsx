@@ -13,19 +13,19 @@ const iced_coffee = [
 ];
 
 const berry_series = [
-    { id: 6, name: "CARAMEL ICED LATTE", price: 39, image: "/Products/caramel_iced_latte.png" },
-    { id: 7, name: "FRENCH VANILLA", price: 39, image: "/Products/french_vanilla.png" },
-    { id: 8, name: "MATCHA LATTE", price: 39, image: "/Products/matcha_latte.png" },
-    { id: 9, name: "SALTED CARAMEL", price: 39, image: "/Products/salted_caramel.png" },
-    { id: 10, name: "SPANISH LATTE", price: 39, image: "/Products/spanish_latte.png" },
+    { id: 6, name: "CHOCOLATE BERRY", price: 39, image: "/Products/chocolate_berry.png" },
+    { id: 7, name: "MATCHA BERRY", price: 39, image: "/Products/matcha_berry.png" },
+    { id: 8, name: "STRAWBERRY", price: 39, image: "/Products/strawberry.png" },
+    { id: 9, name: "STRAWBERRY MILK", price: 39, image: "/Products/strawberry_milk.png" },
+    { id: 10, name: "WHITE CHOCOLATE BERRY", price: 39, image: "/Products/white_chocolate_berry.png" },
 ]
 
 const soda_series = [
-    { id: 11, name: "CARAMEL ICED LATTE", price: 39, image: "/Products/caramel_iced_latte.png" },
-    { id: 12, name: "FRENCH VANILLA", price: 39, image: "/Products/french_vanilla.png" },
-    { id: 13, name: "MATCHA LATTE", price: 39, image: "/Products/matcha_latte.png" },
-    { id: 14, name: "SALTED CARAMEL", price: 39, image: "/Products/salted_caramel.png" },
-    { id: 15, name: "SPANISH LATTE", price: 39, image: "/Products/spanish_latte.png" },
+    { id: 11, name: "BLUE BERRY", price: 39, image: "/Products/blue_berry.png" },
+    { id: 12, name: "GREEN APPLE", price: 39, image: "/Products/green_apple.png" },
+    { id: 13, name: "PASSION FRUIT", price: 39, image: "/Products/passion_fruit.png" },
+    { id: 14, name: "STRAWBERRY", price: 39, image: "/Products/strawberry.png" },
+    { id: 15, name: "KIWI", price: 39, image: "/Products/kiwi.png" },
 ]
 
 const Store = () => {
